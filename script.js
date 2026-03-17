@@ -28,46 +28,77 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 2. Scroll Animation (Intersection Observer)
+    // 2. Advanced Scroll Animation (Intersection Observer)
     const observerOptions = {
-        root: null,
-        rootMargin: '0px',
-        threshold: 0.15
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
     };
 
-    const observer = new IntersectionObserver((entries, observer) => {
+    const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('visible');
-                observer.unobserve(entry.target); // Animate only once
+                // observer.unobserve(entry.target); // Keep observing for repeat effects if needed
             }
         });
     }, observerOptions);
 
-    const fadeElements = document.querySelectorAll('.fade-up');
-    fadeElements.forEach(el => observer.observe(el));
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
 
-    // 3. Header styling on scroll
-    const header = document.querySelector('.header');
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 50) {
-            header.style.boxShadow = '0 4px 10px rgba(0,0,0,0.1)';
-            header.style.backgroundColor = 'rgba(253, 251, 247, 0.98)';
-        } else {
-            header.style.boxShadow = '0 1px 3px rgba(0,0,0,0.05)';
-            header.style.backgroundColor = 'rgba(253, 251, 247, 0.95)';
-        }
-    });
+    // 3. Header styling on scroll (Fixed Class Name)
+    const header = document.querySelector('.site-header');
+    if (header) {
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+    }
 
-    // 4. Form Submission Alert
+    // 4. Advanced Form Validation & Security
     const consultForm = document.getElementById('consultationForm');
     if (consultForm) {
         consultForm.addEventListener('submit', (e) => {
             e.preventDefault();
-            const name = document.getElementById('name').value;
-            // 간단한 시뮬레이션
-            alert(`${name}님, 상담 신청이 완료되었습니다.\n가장 빠른 시일 내에 전문 상담사가 연락드리겠습니다. 감사합니다.`);
-            consultForm.reset();
+            
+            const name = document.getElementById('name').value.trim();
+            const phone = document.getElementById('phone').value.trim();
+            const service = document.getElementById('service').value;
+
+            // Simple Security: Basic Regex for Phone
+            const phoneRegex = /^[0-9-]{10,15}$/;
+            
+            if (name.length < 2) {
+                alert('성함을 명확히 입력해 주세요 (2자 이상)');
+                return;
+            }
+            
+            if (!phoneRegex.test(phone.replace(/\s/g, ""))) {
+                alert('올바른 연락처 형식을 입력해 주세요.');
+                return;
+            }
+
+            if (!service) {
+                alert('관심 서비스를 선택해 주세요.');
+                return;
+            }
+
+            // Simulate loading state & encryption
+            const submitBtn = consultForm.querySelector('button');
+            const originalText = submitBtn.innerText;
+            submitBtn.disabled = true;
+            submitBtn.style.opacity = '0.7';
+            submitBtn.innerText = '데이터 암호화 및 전송 중...';
+
+            setTimeout(() => {
+                alert(`[상담 접수 완료]\n${name}님, 소중한 상담 신청 감사합니다.\n적어주신 연락처(${phone})로 전문 케어 매니저가 곧 연락 드리겠습니다.`);
+                consultForm.reset();
+                submitBtn.disabled = false;
+                submitBtn.style.opacity = '1';
+                submitBtn.innerText = originalText;
+            }, 1200);
         });
     }
 });

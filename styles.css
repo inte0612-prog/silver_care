@@ -115,6 +115,15 @@ img {
 .site-header {
     background: var(--white);
     width: 100%;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    transition: var(--transition);
+}
+
+.site-header.scrolled {
+    box-shadow: var(--shadow-md);
+    transform: translateY(-2px);
 }
 
 .top-bar {
