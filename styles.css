@@ -1,15 +1,15 @@
 :root {
     /* Colors derived from the LifeCare design sample */
-    --primary: #3DA4FF; /* Brighter Base Blue */
-    --primary-light: #6EBEFF; /* Brighter Light Blue for Box 1 */
-    --primary-dark: #1E8DF2; /* Brighter Dark Blue for Box 3 */
-    --teal: #50D0A9; /* Brighter Green/Teal for Active nav */
+    --primary: #1264B3; /* Darker Base Blue */
+    --primary-light: #1C7CD5; /* Darker Light Blue for Box 1 */
+    --primary-dark: #0B4379; /* Darker Dark Blue for Box 3 */
+    --teal: #2D8A6F; /* Darker Green/Teal for Active nav */
     
     --text-dark: #2A2A2A;
     --text-medium: #555555;
     --text-light: #888888;
     --white: #ffffff;
-    --bg-light: #F2F9FF; /* Cool and brighter off-white */
+    --bg-light: #F4F6F9; /* Slightly neutral light background */
     --border-color: #E2E8F0;
 
     /* Typography */
@@ -200,10 +200,10 @@ img {
 .nav-menu a {
     display: flex;
     align-items: center;
-    padding: 0 20px;
+    padding: 0 35px; /* 넓어진 간격 */
     color: var(--white);
     font-weight: 500;
-    font-size: 15px;
+    font-size: 16px; /* 가시성을 위해 약간 키움 */
     height: 100%;
 }
 
