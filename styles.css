@@ -183,7 +183,7 @@ img {
 
 .nav-inner {
     display: flex;
-    justify-content: space-between;
+    justify-content: center; /* 변경: 중앙 정렬 */
     align-items: center;
     height: 100%;
 }
