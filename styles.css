@@ -1,15 +1,15 @@
 :root {
     /* Colors derived from the LifeCare design sample */
-    --primary: #1A82E2; /* Base Blue */
-    --primary-light: #3FA9F5; /* Light Blue for Box 1 */
-    --primary-dark: #0D6BB8; /* Dark Blue for Box 3 */
-    --teal: #43B593; /* Green/Teal for Active nav */
+    --primary: #3DA4FF; /* Brighter Base Blue */
+    --primary-light: #6EBEFF; /* Brighter Light Blue for Box 1 */
+    --primary-dark: #1E8DF2; /* Brighter Dark Blue for Box 3 */
+    --teal: #50D0A9; /* Brighter Green/Teal for Active nav */
     
     --text-dark: #2A2A2A;
     --text-medium: #555555;
     --text-light: #888888;
     --white: #ffffff;
-    --bg-light: #F8F9FA;
+    --bg-light: #F2F9FF; /* Cool and brighter off-white */
     --border-color: #E2E8F0;
 
     /* Typography */
